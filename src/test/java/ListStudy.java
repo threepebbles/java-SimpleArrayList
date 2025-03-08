@@ -34,7 +34,7 @@ public class ListStudy {
         assertThat(values.contains(1)).isTrue(); // "first" 값이 포함되어 있는지를 확인한다.
         assertThat(values.remove(0)).isEqualTo(1); // 첫 번째 값을 삭제한다.
         assertThat(values.size()).isEqualTo(2); // 값이 삭제 됐는지 확인한다.
-        
+
         for (int i = 0; i < values.size(); i++) {
             System.out.println(values.get(i));
         }
@@ -58,5 +58,20 @@ public class ListStudy {
         final double intTotal = SimpleList.sum(intValues);  // 3
         System.out.println(doubleTotal);
         System.out.println(intTotal);
+    }
+
+    @Test
+    void mission4() {
+        final SimpleList<Double> doubleValues = new SimpleArrayList<Double>(-0.1, 0.5, 0.7);
+        final SimpleList<Integer> intValues = new SimpleArrayList<Integer>(-10, 1, 2);
+
+        final SimpleList<Double> filteredDoubleValues = SimpleList.filterNegative(doubleValues);
+        final SimpleList<Integer> filteredIntValues = SimpleList.filterNegative(intValues);
+        for (int i = 0; i < filteredDoubleValues.size(); i++) {
+            System.out.println(filteredDoubleValues.get(i));
+        }
+        for (int i = 0; i < filteredIntValues.size(); i++) {
+            System.out.println(filteredIntValues.get(i));
+        }
     }
 }
