@@ -2,7 +2,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-public class ListStudy {
+public class ListStudyTest {
     @Test
     public void arrayList() {
         SimpleList<String> values = new SimpleArrayList<>();
