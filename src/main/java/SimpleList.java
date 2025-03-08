@@ -26,6 +26,20 @@ public interface SimpleList<E> {
         return ret;
     }
 
+    /**
+     * PECS(Producer Extends, Consumer Super)
+     * <p>
+     * ? extends T: Upper Bounded Wildcard. Producer 역할. 읽기 전용.
+     * <p>
+     * ? super T: Lower Bounded Wildcard: Consumer 역할. 쓰기 전용.
+     */
+    static <T> void copy(SimpleList<? extends T> src, SimpleList<? super T> dst) {
+        final int size = src.size();
+        for (int i = 0; i < size; i++) {
+            dst.add(src.get(i));
+        }
+    }
+
     boolean add(E element);
 
     void add(int index, E element);
