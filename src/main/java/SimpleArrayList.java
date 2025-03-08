@@ -7,23 +7,21 @@ public class SimpleArrayList<E> implements SimpleList<E> {
     transient Object[] elementData;
     private int size;
 
-    public SimpleArrayList(int initialCapacity) {
-        if (initialCapacity > 0) {
-            this.elementData = new Object[initialCapacity];
-        } else if (initialCapacity == 0) {
-            this.elementData = EMPTY_ELEMENTDATA;
-        } else {
-            throw new IllegalArgumentException("Illegal Capacity: " +
-                    initialCapacity);
-        }
-    }
-
     public SimpleArrayList() {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
-    public <T> SimpleArrayList(T[] array) {
-        this.elementData = array;
+    @SafeVarargs
+    public SimpleArrayList(E... elements) {
+        final int length = elements.length;
+        if (length == 0) {
+            this.elementData = EMPTY_ELEMENTDATA;
+            return;
+        }
+        final Object[] elementData = new Object[elements.length];
+        System.arraycopy(elements, 0, elementData, 0, elements.length);
+        this.elementData = elementData;
+        size = length;
     }
 
     @Override

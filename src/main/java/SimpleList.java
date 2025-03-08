@@ -1,5 +1,14 @@
 public interface SimpleList<E> {
 
+    static <T extends Number> double sum(SimpleList<T> numbers) {
+        double sum = 0;
+        final int size = numbers.size();
+        for (int i = 0; i < size; i++) {
+            sum += numbers.get(i).doubleValue();
+        }
+        return sum;
+    }
+
     static <T> SimpleList<T> fromArrayToList(T[] array) {
         return new SimpleArrayList<T>(array);
     }
