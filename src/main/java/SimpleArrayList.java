@@ -22,6 +22,10 @@ public class SimpleArrayList<E> implements SimpleList<E> {
         this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
     }
 
+    public <T> SimpleArrayList(T[] array) {
+        this.elementData = array;
+    }
+
     @Override
     public boolean add(E element) {
         add(element, elementData, size);

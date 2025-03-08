@@ -40,4 +40,10 @@ public class ListStudy {
             System.out.println(values.get(i));
         }
     }
+
+    @Test
+    void mission2() {
+        final String[] arrays = {"first", "second"};
+        final SimpleList<String> values = SimpleList.<String>fromArrayToList(arrays);
+    }
 }

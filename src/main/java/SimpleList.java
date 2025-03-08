@@ -1,5 +1,9 @@
 public interface SimpleList<E> {
 
+    static <T> SimpleList<T> fromArrayToList(T[] array) {
+        return new SimpleArrayList<T>(array);
+    }
+
     boolean add(E element);
 
     void add(int index, E element);
