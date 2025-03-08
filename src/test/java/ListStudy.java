@@ -34,8 +34,7 @@ public class ListStudy {
         assertThat(values.contains(1)).isTrue(); // "first" 값이 포함되어 있는지를 확인한다.
         assertThat(values.remove(0)).isEqualTo(1); // 첫 번째 값을 삭제한다.
         assertThat(values.size()).isEqualTo(2); // 값이 삭제 됐는지 확인한다.
-
-        // TODO: values에 담긴 모든 값을 출력한다.
+        
         for (int i = 0; i < values.size(); i++) {
             System.out.println(values.get(i));
         }
@@ -45,6 +44,9 @@ public class ListStudy {
     void mission2() {
         final String[] arrays = {"first", "second"};
         final SimpleList<String> values = SimpleList.<String>fromArrayToList(arrays);
+        for (int i = 0; i < values.size(); i++) {
+            System.out.println(values.get(i));
+        }
     }
 
     @Test
