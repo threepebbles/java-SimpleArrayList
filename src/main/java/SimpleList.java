@@ -13,18 +13,36 @@ public interface SimpleList<E> {
         return new SimpleArrayList<T>(array);
     }
 
-    static <T extends Number> SimpleList<T> filterNegative(SimpleList<T> numbers) {
+    /**
+     * 파라미터의 제네릭 타입이 <? extends Number>인 경우, producer로써 읽기만 가능하다. ? extends T를 사용하면 T와 그 하위 타입들만 허용되고, T의 상위 타입은 허용되지
+     * 않는다.
+     */
+    static <T extends Number> SimpleList<T> filterNegative(SimpleList<? extends Number> numbers) {
         SimpleList<T> ret = new SimpleArrayList<>();
         final int size = numbers.size();
         for (int i = 0; i < size; i++) {
-            final T value = numbers.get(i);
+            @SuppressWarnings("unchecked") final T value = (T) numbers.get(i);
             if (value.doubleValue() < 0) {
                 continue;
             }
-            ret.add(numbers.get(i));
+            ret.add(value);
         }
         return ret;
     }
+
+//    static <T extends Number> SimpleList<T> filterNegative2(SimpleList<T> numbers) {
+//        SimpleList<T> ret = new SimpleArrayList<>();
+//        final int size = numbers.size();
+//        for (int i = 0; i < size; i++) {
+//            final T value = numbers.get(i);
+//            if (value.doubleValue() < 0) {
+//                continue;
+//            }
+//            ret.add(value);
+//            numbers.add(value);   // 막아야 함 -> 파라미터에 상위 제한 와일드카드 사용해야 함
+//        }
+//        return ret;
+//    }
 
     /**
      * PECS(Producer Extends, Consumer Super)
