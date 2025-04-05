@@ -31,11 +31,11 @@ public interface SimpleList {
 
 ```java
 SimpleList<Integer> values=new SimpleArrayList<Integer>();
-        values.add(1);
-        values.add(2);
+values.add(1);
+values.add(2);
 
-        Integer first=values.get(0);
-        Integer second=values.get(1);
+Integer first=values.get(0);
+Integer second=values.get(1);
 ```
 
 제네릭을 사용하여 String 이외의 타입도 다룰 수 있도록 만든다.
